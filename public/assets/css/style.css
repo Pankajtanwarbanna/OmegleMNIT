@@ -1,0 +1,23 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.navbar-inverse {
+    background-color: transparent;
+    border-color: transparent;
+    margin-bottom: 10px;
+}
+
+.send {
+    margin-left: 5px;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    padding-left: 8em;
+    padding-right: 8em;
+}
+
+.form-control {
+    height: 55px;
+    font-size: 15px;
+    box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Title of Web Page -->
+        <title>
+            Omegle MNIT : Real time chat application
+        </title>
+        <!-- Favicon of the web page -->
+        <link rel="icon" href="/assets/img/logo.png" type="image/png">
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <!--CSS  Style sheet -->
+        <link rel="stylesheet" href="/assets/css/style.css"/>
+
+        <!--Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+    </head>
+
+    <body>
+        <h1 class="text-center">
+            Welcome to Omegle MNIT :)
+        </h1>
+
+        <div class="container">
+            <ul id="messages"></ul>
+        </div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid">
+                <form>
+                    <div class="row text-center">
+                        <div class="col-md-7 col-md-offset-1">
+                            <input id="m" type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary send">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </nav>
+
+
+        <!--All Java Script Files goes here-->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+            $(function () {
+                var socket = io();
+                $('form').submit(function(e){
+                    e.preventDefault(); // prevents page reloading
+                    socket.emit('chat message', $('#m').val());
+                    $('#m').val('');
+                    return false;
+                });
+
+                socket.on('chat message', function (msg) {
+                    $('#messages').append($('<li>').text(msg));
+                });
+            });
+        </script>
+    </body>
+</html>
